@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import NavLayout from "../layout/NavLayout";
+import NavLayout from "../layout/NormalLayout";
 import Blog from "../page/Blog";
 
 const router = createBrowserRouter([
