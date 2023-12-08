@@ -12,12 +12,19 @@ code {
     monospace;
 }
 
+.container.main {
+  padding: 2rem 10rem;
+}
+
+.secondary-font {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .nav-logo {
   font-family: 'Cinzel', serif;
 }
 
 a.nav-link {
-  font-size: 1.2rem;
   font-family: 'Sawarabi Mincho', serif;
   font-weight: bolder;
   color: rgb(45, 45, 45);
@@ -26,4 +33,36 @@ a.nav-link {
 a.nav-link.exact-active {
   border-bottom: 5px solid rgb(45, 45, 45);
   outline-offset: 20px;
+}
+
+.main-image {
+  height: 80vh !important;
+  margin: auto !important;
+}
+
+.article-image {
+  display: block;
+  margin: auto;
+  width: 85%;
+  height: 176px;
+}
+
+.typo-mono {
+  font-family: monospace;
+}
+
+.typo-title {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .container.main {
+    padding: 0px
+  }
+
+  .main-image {
+    height: 100% !important;
+    margin: auto !important;
+  }
 }
