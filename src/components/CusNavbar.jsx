@@ -7,7 +7,7 @@ export default function CusNavbar() {
     <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand href="#home">
-          <h2 className="nav-logo">NORDIC ROSE</h2>
+          <h3 className="nav-logo">NORDIC ROSE</h3>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
