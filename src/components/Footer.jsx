@@ -15,7 +15,7 @@ export default function Footer() {
         <Link className="fw-bold mx-2 mx-md-5 footer-link">Creativity</Link>
         <Link className="mx-2 mx-md-5 footer-link">Strategy</Link>
         <Link className="fw-bold mx-2 mx-md-5 footer-link">SusLinkense</Link>
-        <Link className="mx-2 mx-md-5">Growth</Link>
+        <Link className="mx-2 mx-md-5 footer-link">Growth</Link>
       </section>
       <section className="container-md mx-auto px-2 px-md-3 text-white text-center">
         <div className="row">
