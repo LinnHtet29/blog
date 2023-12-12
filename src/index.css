@@ -46,6 +46,12 @@ a.nav-link.exact-active {
   margin: auto !important;
 }
 
+.profileImage {
+  width: 80px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 .article-image {
   display: block;
   margin: auto;
@@ -59,6 +65,10 @@ a.nav-link.exact-active {
 
 .typo-title {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.border-bottom-dot {
+  border-bottom: 2px black dotted;
 }
 
 .footer-link {
