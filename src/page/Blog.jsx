@@ -1,4 +1,5 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
+import Article from "../components/Article";
 
 export default function Blog() {
   return (
@@ -23,14 +24,7 @@ export default function Blog() {
         </h2>
         <Row>
           <Col xs={12} md={6} className="mb-4 p-0">
-            <Image
-              className="article-image"
-              src="https://s3-alpha-sig.figma.com/img/401f/6c4e/b41fc4f07883f092abcb8b50cc385300?Expires=1702857600&Signature=jtt820hsaYxepCCSeresu7icheFwUCj3osVhhp8u6p5B-lGHNRYGajYJ0r9sLJDOF77rysyDfeyAy0UCuzom2aF9qOEJ7MQ0FDn4biPXbM36BodXM2-WlOkII1I~j8tLN7hIzRMdo67XL~PHXghhAwFq-vz~AOIeBfGe9Z1LtAuzrG9wob01yGassR6Qx3xT-XfjXYzw2qrvzABllGis7ywLcioRBxrk34WAu6RJaQlBexwvb6ol8VV9XapnozzmTbPhnziqQjvFuyctcbSvPzDPXwqQAKciEm4OO2xJTuPF3K1A-Sn0TDOBbnqjhofA-HTG-RDEH8Pr01oDri8YZw__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4"
-              fluid
-            />
-            <p className="typo-title fs-6 text-center">
-              Here are some things you should know regarding how we work
-            </p>
+            <Article />
           </Col>
           <Col xs={12} md={6} className="mb-4 p-0">
             <Image
