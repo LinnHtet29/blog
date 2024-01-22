@@ -7,9 +7,9 @@ import {
   Button,
   InputGroup,
 } from "react-bootstrap";
-import Article from "../components/Article";
-import eyeSvg from "../assets/images/eye.svg";
-import SignUpForm from "../components/SignUpForm";
+import BlogArticle from "../../components/public/blog/BlogArticle";
+import eyeSvg from "../../assets/images/eye.svg";
+import SignUpForm from "../../components/public/form/SignUpForm";
 
 export default function Detail() {
   const blog = {
@@ -299,7 +299,7 @@ export default function Detail() {
           <Row className="my-5">
             {blogs.map((blog, index) => (
               <Col xs={12} md={4}>
-                <Article
+                <BlogArticle
                   key={index}
                   image={blog.image}
                   title={blog.linkTitle}

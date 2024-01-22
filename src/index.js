@@ -1,14 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./index.css";
+import "../src/assets/style/index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import ReduxProvider from "./redux/provider";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Toaster } from "react-hot-toast";
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <ReduxProvider>
+        <App />
+        <Toaster position="top-center" reverseOrder={false} />
+      </ReduxProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

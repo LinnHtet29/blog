@@ -4,7 +4,9 @@
     "module": "commonjs",
     "baseUrl": ".",
     "paths": {
-      "": ["./src/"]
+      "": ["./src/"],
+      "api": ["./src/services/api/"],
+      "components": ["./src/components/"]
     }
   },
   "include": ["src//*.js", "src//*.jsx"]
