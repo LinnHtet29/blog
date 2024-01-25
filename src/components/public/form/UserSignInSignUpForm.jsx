@@ -22,10 +22,6 @@ export default function UserSignInSignUpForm() {
     isError,
   } = useUserQuery("user", getAllUsers);
 
-  useEffect(() => {
-    console.log("Users", usersData && usersData);
-  }, [usersData, userDataLoading, isError]);
-
   const { mutate, isLoading } = useUserMutate(
     currentMode === "signin" ? signIn : createUser
   );

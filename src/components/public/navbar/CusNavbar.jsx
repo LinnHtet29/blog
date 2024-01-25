@@ -19,7 +19,10 @@ export default function CusNavbar() {
   //   // Additional logic when userInfo changes
   // }, [userInfo]);
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar
+      expand="lg"
+      className="bg-body-tertiary position-fixed top-0 start-0 w-100"
+    >
       <Container>
         <Navbar.Brand href="#home">
           <h3 className="logo">NORDIC ROSE</h3>

@@ -64,6 +64,7 @@ export const signUpUser = baseUserSchema;
 export const signInUser = baseUserSchema.shape({
   email: Yup.string().email().required("Email is required"),
   username: Yup.string().notRequired(),
+  password: Yup.string().required("Password is required"),
   confirm_password: Yup.string().notRequired(),
 });
 

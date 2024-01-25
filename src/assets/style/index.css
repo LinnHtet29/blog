@@ -122,6 +122,48 @@ a.nav-link.exact-active {
   z-index: 1000;
 }
 
+/* Admin Style*/
+.sidebar-link-menu li div {
+  cursor: pointer;
+}
+
+.sidebar-link-menu li div:hover {
+  color: rgb(44, 83, 224) !important;
+}
+
+.sidebar-link-menu li a:hover {
+  color: rgb(44, 83, 224) !important;
+}
+
+.sidebar-link-menu li a.is-active:hover {
+  color: white !important;
+}
+
+.approved-status {
+  color: #487BE3 !important;
+}
+
+.pending-status {
+  color: #F99244 !important;
+}
+
+.rejected-status {
+  color: #FF4041 !important;
+}
+
+.data-table {
+  border-collapse: collapse !important;
+  max-height: 68vh !important;
+  overflow: auto !important;
+}
+
+.data-table-header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  z-index: 1;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .container.main {

@@ -10,12 +10,12 @@ export default function Blog() {
     data: blogsData,
     isLoading,
     isError,
-  } = useBlogQuery("blog", getAllBlogs);
+  } = useBlogQuery(["blogs"], () => getAllBlogs());
   const [latestBlog, setLatestBlog] = useState();
 
   useEffect(() => {
     if (blogsData) {
-      setLatestBlog(blogsData.data.blogs.content[0]);
+      setLatestBlog(blogsData.data.items.content[0]);
     }
   }, [blogsData, isLoading, isError]);
 
@@ -31,7 +31,7 @@ export default function Blog() {
         )}
       </section>
       {blogsData && (
-        <BlogList blogs={blogsData && blogsData.data.blogs.content.slice(1)} />
+        <BlogList blogs={blogsData && blogsData.data.items.content.slice(1)} />
       )}
     </Container>
   );

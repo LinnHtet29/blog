@@ -1,6 +1,8 @@
 import axios from "axios";
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_BASE_URL,
+  // baseURL: process.env.REACT_APP_BASE_URL,
+  // withCredentials: true,
 });
 
 // Request interceptor
@@ -9,7 +11,6 @@ axiosInstance.interceptors.request.use(
     config.headers["Content-Type"] = "application/json";
     const accessToken = process.env.REACT_APP_ACCESS_TOKEN;
     const userToken = JSON.parse(localStorage.getItem("token"));
-
     if (accessToken) {
       if (config.headers) config.headers.accessToken = accessToken;
     }
@@ -29,6 +30,9 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
+    if (error.name === "TokenExpiredError") {
+      localStorage.setItem("token", "");
+    }
     return Promise.reject(error);
   }
 );

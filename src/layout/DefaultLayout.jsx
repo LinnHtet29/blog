@@ -6,7 +6,9 @@ export default function NormalLayout() {
   return (
     <>
       <CusNavbar />
-      <Outlet />
+      <div className="mt-5 pt-2">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

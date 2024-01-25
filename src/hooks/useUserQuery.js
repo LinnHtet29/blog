@@ -19,7 +19,10 @@ export const useUserMutate = (mutationFn) => {
           dispatch(setUserToken(userData.token));
           dispatch(setUserInfo(userData.user));
           toast.success("SignIn successful!");
-          router.navigate(-1);
+          localStorage.setItem("token", JSON.stringify(userData.token));
+          if (userData.user.role === "ADMIN")
+            router.navigate("/auth/dashboard");
+          if (userData.user.role !== "ADMIN") router.navigate(-1);
         } else if (userData.user) {
           toast.success("SignUp successful!");
           dispatch(switchSignInOrUp("signin"));
@@ -30,8 +33,8 @@ export const useUserMutate = (mutationFn) => {
         toast.error("Invalid response structure.");
       }
     },
-    onError: () => {
-      toast.error("There was an error.");
+    onError: (error) => {
+      toast.error(error.response.data.message);
     },
     onSettled: () => {
       // QueryClient.invalidateQueries("create");

@@ -5,6 +5,7 @@ import Detail from "../page/public/Detail";
 import Login from "../page/public/Login";
 import Dashboard from "../page/admin/Dashboard";
 import AdminLayout from "../layout/AdminLayout";
+import BlogList from "../page/admin/BlogList";
 
 const router = createBrowserRouter([
   {
@@ -30,8 +31,12 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        index: true,
+        path: "/auth/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/auth/blog",
+        element: <BlogList />,
       },
     ],
   },

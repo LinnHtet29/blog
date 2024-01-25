@@ -1,28 +1,40 @@
 import React from "react";
 import PieChart from "../../components/admin/charts/PieChart";
 import PieChartInfo from "../../components/admin/charts/PieChartInfo";
-import BlogTable from "../../components/admin/table/BlogTable";
+import BlogTable from "../../components/admin/table/BlogStatusTable";
+import { useBlogQuery } from "../../hooks/useBlogQuery";
+import { getAllBlogs, getAllBlogsDataCount } from "../../services/blog.service";
 
 export default function Dashboard() {
-  const information = [
-    { style: { background: "#487BE3" }, value: 400 },
-    { style: { background: "#F99244" }, value: 200 },
-    { style: { background: "#FF4041" }, value: 30 },
-  ];
+  const {
+    data: blogsCountData,
+    isLoading: blogsCountLoading,
+    isError: blogsCountError,
+  } = useBlogQuery("blogsCountData", getAllBlogsDataCount);
+
+  console.log("BLogCountData", blogsCountData);
+
+  const {
+    data: blogsData,
+    isLoading: blogsLoading,
+    isError: blogsError,
+  } = useBlogQuery(["blogs?limit=3"], () => getAllBlogs("?limit=3"));
 
   return (
     <div className="overflow-auto">
       <div className="d-flex gap-5">
         <div className="w-100">
           <h6>Blog List</h6>
-          <PieChart />
+          {blogsCountData && <PieChart data={blogsCountData.data.blogData} />}
         </div>
         <div className="w-100">
           <h6>Blog Information</h6>
-          <PieChartInfo information={information} />
+          {blogsCountData && (
+            <PieChartInfo countData={blogsCountData.data.blogData} />
+          )}
         </div>
       </div>
-      <BlogTable />
+      {blogsData && <BlogTable blogs={blogsData.data.items} />}
     </div>
   );
 }

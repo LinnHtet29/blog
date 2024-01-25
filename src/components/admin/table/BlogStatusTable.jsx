@@ -1,10 +1,9 @@
 import React from "react";
-import { formatDateString } from "../../../utils/Formatter/DateFormatter";
 import { Image } from "react-bootstrap";
 import DefaultProfileImage from "../../../assets/images/default_image.png";
+import { formatDateString } from "../../../utils/Formatter/DateFormatter";
 
-export default function BlogTable({ blogs }) {
-  console.log(blogs);
+export default function BlogStatusTable({ blogs }) {
   const getStatusClassName = (status) => {
     switch (status) {
       case "APPROVED":
@@ -17,21 +16,22 @@ export default function BlogTable({ blogs }) {
         return "";
     }
   };
+
   return (
-    <div
-      className="w-100 bg-white border border-1 border-end border-secondary border-opacity-25 rounded-2 overflow-y-auto overflow-x-hidden"
-      style={{ maxHeight: "68vh" }}
-    >
-      <table className="data-table table table-borderless">
-        <thead className="data-table-header ">
+    <div className="w-100 h-100 bg-white border border-1 border-end border-secondary border-opacity-25 rounded-2 overflow-y-auto overflow-x-hidden">
+      <table className="table table-borderless">
+        <thead className="border border-1 border-bottom border-secondary border-opacity-25">
           <tr>
-            <th>Creator</th>
+            <th>
+              <h5>Blog Status</h5>
+            </th>
+          </tr>
+          <tr>
+            <th>User</th>
             <th>Blog Title</th>
             <th>Date In</th>
             <th>Category</th>
             <th>Status</th>
-            <th>Updater</th>
-            <th className="text-nowrap">Updated In</th>
           </tr>
         </thead>
         <tbody>
@@ -65,21 +65,6 @@ export default function BlogTable({ blogs }) {
                 ))}
               </td>
               <td className={getStatusClassName(blog.status)}>{blog.status}</td>
-              <td className="d-flex justify-content-start align-items-center gap-2">
-                <div>
-                  <Image
-                    className="rounded-2"
-                    src={DefaultProfileImage}
-                    width={30}
-                    height={30}
-                    alt="User Profile"
-                  />
-                </div>
-                <span>
-                  {blog.updater ? blog.updater.username : blog.creator.username}
-                </span>
-              </td>
-              <td>{formatDateString(blog.updatedAt)}</td>
             </tr>
           ))}
         </tbody>

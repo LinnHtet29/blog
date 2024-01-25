@@ -20,7 +20,7 @@ export default function UserInfo() {
       <div className="w-100">
         <h5>Aung Aung</h5>
         <h6 className="text-muted">Admin</h6>
-      </div>
+    </div>
     </div>
   );
 }
