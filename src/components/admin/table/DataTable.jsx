@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import FormModal from "../../common/FormModal";
+import CategoryForm from "../form/CategoryForm";
 
-export default function FilterOption({
+export default function DataTable({
   rows,
   query,
   setQuery,
@@ -8,32 +10,19 @@ export default function FilterOption({
   getFn,
   buildQueryFn,
   Table,
+  termName,
 }) {
   const [currentPage, setCurrentPage] = useState(query.skip);
   const [selectedRow, setSelectedRow] = useState(query.limit);
   const [term, setTerm] = useState(query.title);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getFn(buildQueryFn(query));
-        console.log("Response", response);
-      } catch (error) {}
-    };
-
-    fetchData();
-  }, [currentPage, selectedRow, term]);
-
-  useEffect(() => {
     setQuery({ ...query, skip: currentPage, limit: selectedRow, title: term });
-    console.log("query", query);
   }, [currentPage, selectedRow, term]);
 
-  const { data, isLoading, isError } = fetchQueryFn([query], () =>
+  const { data, isLoading, isError, refetch } = fetchQueryFn([query], () =>
     getFn(buildQueryFn(query))
   );
-
-  console.log("Data", !isLoading && data);
 
   const totalPages = data
     ? Math.ceil(data.data.items.totalCount / query.limit)
@@ -50,18 +39,36 @@ export default function FilterOption({
       ...query,
       skip: 1,
       limit: selectedRow,
-      title: e.target.value,
+      [termName]: e.target.value,
+    });
+  };
+
+  const handleSortBy = (sortBy) => {
+    setQuery({
+      ...query,
+      skip: 1,
+      limit: selectedRow,
+      sortBy,
+      order:
+        query.sortBy !== sortBy
+          ? -1
+          : query.order === -1
+          ? 1
+          : query.order === 1
+          ? 0
+          : -1,
     });
   };
 
   return (
     <>
+      <FormModal Form={CategoryForm} refetch={refetch} />
       <div className="w-25 position-absolute top-0 start-0 mt-3">
         <select
           value={selectedRow}
           onChange={(e) => {
             setSelectedRow(e.target.value);
-            setCurrentPage(1); // Reset to the first page when the selected row changes
+            setCurrentPage(1);
             setQuery({
               ...query,
               skip: 1,
@@ -137,7 +144,15 @@ export default function FilterOption({
           </button>
         </div>
       </div>
-      {data && <Table blogs={data.data.items} />}
+      {data && (
+        <Table
+          data={data.data.items}
+          refetch={refetch}
+          sortBy={query.sortBy}
+          order={query.order}
+          handleSortBy={handleSortBy}
+        />
+      )}
     </>
   );
 }
